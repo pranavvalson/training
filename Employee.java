@@ -32,8 +32,8 @@ public class Employee {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
+	} 
+ 
 
 	public double getBalance() {
 		return balance; 
@@ -47,5 +47,28 @@ public class Employee {
 	
 	public void addSalary(double sal) {
 		this.balance+=sal;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		// Employee e1= new Employee(10);
+		// Employee e2=e2;
+		// boolean result = e1.equals(e2);
+		if(obj == this) {
+			return true;
+		}
+		
+		// Employee e1 = new Employee(10);
+		// Employee e2 = null;
+		// boolean result = e1.equals(e2);
+		if(obj==null || !(obj instanceof Employee)) {
+			return false;
+		}
+		
+		// Employee e1 = new Employee(10);
+		// Employee e2 = new Employee(10);
+		// boolean result = e1.equals(e2);
+		Employee emp = (Employee) obj;
+		return this.id==emp.id;
 	}
 }
