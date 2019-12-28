@@ -4,9 +4,24 @@ public class Source {
 		System.out.println("Id :"+emp.getId()+" Name: "+emp.getName()+" Balance:"+emp.getBalance());
 	}
 	
+	public static void print(Employee[] employees) {
+		for(Employee e: employees) {
+			System.out.println(e.getName()+e.getBalance()); 
+			if(e instanceof Manager) { 
+				Manager m = (Manager) e; 
+				System.out.println("Manager name: "+m.getName());
+				Employee[] managedEmployees = new Employee[4];
+				managedEmployees = m.getEmployees();
+				for(Employee emp: managedEmployees) {
+					display(emp);
+				}
+			} 
+		}
+	}
+	
 	public static void main(String[] args) {
 		
-		Employee[] emp=new Employee[3];
+		Employee[] emp=new Employee[4];
 		
 		emp[0] = new Employee();
 		emp[0].setId(1);
@@ -28,17 +43,10 @@ public class Source {
 			manager.setEmployees(emp[i]);
 		}
 		
-		Employee[] sub = new Employee[3];
-		sub = manager.getEmployees();
+		emp[3] = new Employee();
+		emp[3] = manager;
 		
-		
-		System.out.println(manager.getName());
-		
-		for(int i=0; i<3; i++) {
-			display(sub[i]);
-		}
-		
-		
+		print(emp);
 		
 		
 	}

@@ -36,7 +36,7 @@ public class Employee {
 
 
 	public double getBalance() {
-		return balance;
+		return balance; 
 	}
 
 
